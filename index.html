@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
+    <title>Miquel de la Fuente | Portfolio</title>
+
+    <meta property="og:title" content="Portfolio van Miquel de la Fuente">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="https://kumavolt.dev">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:site_name" content="Portfolio van Miquel de la Fuente">
+    <meta name="twitter:image:alt" content="Alt text for image">
+
+    <meta name="twitter:site" content="@KumaVolt">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/normalize.css">
+
+    <script src="https://kit.fontawesome.com/26c5c095ea.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --black: #000;
+            --white: #fff;
+            --main-color: #b5e853;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .k-viewport {
+
+        }
+
+        .k-header {
+            background-color: var(--white);
+            color: var(--black);
+            position: fixed;
+            width: calc(100% - 40px);
+            padding: 20px;
+            height: calc(100px - 40px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .site-name h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .k-main {
+            padding-top: 100px;
+        }
+
+        .k-footer, .k-footer a {
+            /* background-color: #383737; */
+            background-color: #111111;
+            color: var(--white);
+        }
+
+        .k-footer section {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .k-footer .split {
+            margin: 40px auto;
+        }
+
+        .k-footer .social-list {
+            list-style: none;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 100px 100px 100px;
+            grid-template-rows: auto;
+            margin: 40px 0;
+        }
+
+        .k-footer .copyright {
+            margin: 50px auto;
+        }
+
+        #about {
+            /* background-color: #B4D2E8; */
+            background-color: #FF6961;
+
+            padding: 50px 0px;
+        }
+
+        #about h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .console-window {
+            background-color: #ccc;
+            padding-top: 20px;
+            margin: 0 auto;
+            max-width: 750px;
+            border-radius: 3px;
+        }
+
+        .console {
+            font-family: monospace;
+            margin: 0 auto;
+            background-color: #383737;
+            padding:  15px 20px;
+            line-height: 25px;
+        }
+
+        .console a[href^="mailto:"] {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="k-viewport">
+        <header class="k-header">
+            <div class="site-name">
+                <h1>
+                    Miquel de la Fuente
+                </h1>
+            </div>
+        </header>
+        <!-- <nav class="k-navigation">
+            <ul>
+                <li>
+                    <a href="#about-me">About me</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact-me">Contact me</a>
+                </li>
+            </ul>
+        </nav> -->
+
+        <main class="k-main">
+
+            <section id="about">
+                <h2>Hello World! <br> I am an application developer</h2>
+
+                <div class="console-window">
+                    <div class="console-actions">
+                        <i class="red close-button"></i>
+                        <i class="yellow collapse-button"></i>
+                        <i class="green toggle-fullscreen-button"></i>
+                    </div>
+                    <div class="console">
+                        <p>
+                            > miquel.origin
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> "North Holland, The Netherlands"
+                            </span>
+                        </p>
+
+                        <p>
+                            > miquel.bachelor
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> "Application- and media development"
+                            </span>
+                        </p>
+
+                        <p>
+                            > miquel.graduated
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> "December 2017"
+                            </span>
+                        </p>
+
+                        <p>
+                            > miquel.interest
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> ["code", "anime", "music"]
+                            </span>
+                        </p>
+
+                        <p>
+                            > miquel.email
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> "<a href="mailto:miquelakshay@gmail.com">miquelakshay@gmail.com</a>"
+                            </span>
+                        </p>
+
+
+                        <p>
+                            Overwrite current config file? [y/n] y
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resume">
+                <h2>Résumé</h2>
+                <p>Coming soon</p>
+            </section>
+
+            <section id="work">
+                <h2>Work</h2>
+                <p>Coming soon</p>
+            </section>
+
+        </main>
+
+        <footer class="k-footer">
+
+            <hr class="split">
+            <section>
+                <span>Connect with me</span>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/kumavolt/" target="_blank" rel="nofollow noopener">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="nofollow noopener">Linkedin</a>
+                    </li>
+                    <li>
+                        <a href="mailto:miquelakshay@gmail.com" target="_blank" rel="nofollow noopener">Email</a>
+                    </li>
+                </ul>
+
+                <span class="copyright">© 2021 Miquel de la Fuente.  All rights reserved.</span>
+            </section>
+        </footer>
+    </div>
+</body>
+</html>
