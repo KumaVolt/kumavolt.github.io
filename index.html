@@ -6,25 +6,26 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
     <title>Miquel de la Fuente | Portfolio</title>
 
+    <meta property="title" content="Miquel de la Fuente | Portfolio">
+    <meta name="description" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Connect with me at Github, Instagram, Twitter and Linkedin.">
+
     <meta property="og:title" content="Miquel de la Fuente | Portfolio">
-    <meta property="og:description" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Also find me at Github, Instagram, Twitter and Linkedin under the same username.">
+    <meta property="og:description" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Connect with me at Github, Instagram, Twitter and Linkedin.">
     <meta property="og:image" content="https://kumavolt.dev/assets/images/site_screenhot.png">
     <meta property="og:url" content="https://kumavolt.dev">
     <meta name="twitter:card" content="summary_large_image">
 
-    <meta property="og:site_name" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Also find me at Github, Instagram, Twitter and Linkedin under the same username.">
-    <meta name="twitter:image:alt" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Also find me at Github, Instagram, Twitter and Linkedin under the same username.">
+    <meta property="og:site_name" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Connect with me at Github, Instagram, Twitter and Linkedin.">
+    <meta name="twitter:image:alt" content="Portfolio of Miquel de la Fuente AKA KumaVolt. Connect with me at Github, Instagram, Twitter and Linkedin.">
 
     <meta name="twitter:site" content="@KumaVolt">
 
     <meta name="theme-color" content="#FF6961">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <link rel="stylesheet" href="./assets/css/normalize.css">
-
-    <script src="https://kit.fontawesome.com/26c5c095ea.js" crossorigin="anonymous"></script>
 
     <style>
         :root {
@@ -93,9 +94,13 @@
             list-style: none;
             display: grid;
             grid-gap: 10px;
-            grid-template-columns: 100px 100px 100px;
+            grid-template-columns: 120px 120px 120px;
             grid-template-rows: auto;
             margin: 40px 0;
+        }
+
+        .k-footer .social-list .social-item {
+            padding: 8px 5px;
         }
 
         .k-footer .copyright {
@@ -235,18 +240,22 @@
             <section>
                 <span>Connect with me</span>
                 <ul class="social-list">
-                    <li>
-                      <a href="https://www.instagram.com/kumavolt/" target="_blank" rel="nofollow noopener">Instagram</a>
+                    <li class="social-item">
+                      <a class="social-link" href="https://www.instagram.com/kumavolt/" target="_blank" rel="nofollow noopener">Instagram</a>
                     </li>
-                    <li>
-                      <a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="nofollow noopener">Linkedin</a>
+                    <li class="social-item">
+                      <a class="social-link" href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="nofollow noopener">Linkedin</a>
                     </li>
-                    <li>
-                      <a href="https://github.com/KumaVolt" target="_blank" rel="nofollow noopener">Github</a>
+                    <li class="social-item">
+                      <a class="social-link" href="https://github.com/KumaVolt" target="_blank" rel="nofollow noopener">Github</a>
                     </li>
-                    <li>
-                        <a href="mailto:mfuente@kumavolt.dev" target="_blank" rel="nofollow noopener">Email</a>
+                    <li class="social-item">
+                        <a class="social-link" href="mailto:mfuente@kumavolt.dev" target="_blank" rel="nofollow noopener">Email</a>
                     </li>
+                    <li class="social-item">
+                        <a class="social-link" href="https://twitch.tv/kumavolt" target="_blanl" rel="nofollow noopener">Twitch</a>
+                    </li>
+
                 </ul>
 
                 <span class="copyright">© 2021 Miquel de la Fuente.  All rights reserved.</span>
