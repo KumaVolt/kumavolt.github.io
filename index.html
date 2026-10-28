@@ -269,6 +269,102 @@
         .console a[href^="mailto:"] {
             color: #ccc;
         }
+
+        #now, #projects {
+            padding: 50px 20px;
+        }
+
+        .job {
+            box-sizing: border-box;
+            max-width: 750px;
+            margin: 0 auto 30px;
+        }
+
+        .job h3 {
+            color: var(--main-color);
+        }
+
+        #now h2, #projects h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: #ccc;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .section-intro a {
+            color: var(--main-color);
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 750px;
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project {
+            background-color: #111111;
+            border: 1px solid #383737;
+            border-radius: 3px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project h3 {
+            margin: 0 0 5px;
+        }
+
+        .project h3 a {
+            color: var(--main-color);
+            text-decoration: none;
+        }
+
+        .project h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .project .meta {
+            font-family: monospace;
+            font-size: 13px;
+            color: #999;
+            margin: 0 0 15px;
+        }
+
+        .project p {
+            line-height: 1.6;
+            margin: 0 0 15px;
+        }
+
+        .project .links {
+            margin-top: auto;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .project .links a {
+            color: #ccc;
+            margin-right: 15px;
+        }
+
+        @media (max-width: 420px) {
+            .project-list {
+                grid-template-columns: 1fr;
+            }
+
+            .k-footer .social-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -336,10 +432,26 @@
                         </p>
 
                         <p>
+                            > miquel.job
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> "IT Application Developer @ Brightness Group"
+                            </span>
+                        </p>
+
+                        <p>
                             > miquel.interests
                             <br>
                             <span class="answer">
                                 &nbsp;&nbsp;=> ["code", "anime", "music", "gaming", "game creation", "cinematography", "easter eggs"]
+                            </span>
+                        </p>
+
+                        <p>
+                            > miquel.languages
+                            <br>
+                            <span class="answer">
+                                &nbsp;&nbsp;=> ["Rust", "PHP", "TypeScript", "C++"]
                             </span>
                         </p>
 
@@ -359,14 +471,68 @@
                 </div>
             </section>
 
-            <section id="resume">
-                <h2>Résumé</h2>
-                <p>Coming soon</p>
+            <section id="now">
+                <h2>Currently working on</h2>
+                <div class="project job">
+                    <h3>IT Application Developer</h3>
+                    <p class="meta">Brightness Group BV · Nov 2017 – present · Full-time</p>
+                    <p>Building applications at Brightness Group in Hoofddorp, where I started as an application development intern in February 2017.</p>
+                    <div class="links">
+                        <a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+
+                <p class="section-intro">
+                    Outside of work I'm building open-source desktop and server tools in Rust.
+                </p>
+
+                <ul class="project-list">
+                    <li class="project">
+                        <h3><a href="https://github.com/KumaVolt/pack" target="_blank" rel="noopener">Pack</a></h3>
+                        <p class="meta">Rust · MIT · macOS / Windows / Linux</p>
+                        <p>A free local PHP development environment. Every folder becomes <code>https://&lt;name&gt;.test</code>, with PHP 8.2–8.5, MySQL, Postgres, Redis, a mail inbox and more in one app.</p>
+                        <div class="links">
+                            <a href="https://github.com/KumaVolt/pack" target="_blank" rel="noopener">Source</a>
+                            <a href="https://github.com/KumaVolt/pack/releases" target="_blank" rel="noopener">Download</a>
+                        </div>
+                    </li>
+                    <li class="project">
+                        <h3><a href="https://github.com/KumaVolt/ember" target="_blank" rel="noopener">Ember</a></h3>
+                        <p class="meta">Rust · MIT · work in progress</p>
+                        <p>A server control panel you own outright. One Rust binary with its own PHP runtime, login against real system accounts, and a Symfony panel.</p>
+                        <div class="links">
+                            <a href="https://github.com/KumaVolt/ember" target="_blank" rel="noopener">Source</a>
+                        </div>
+                    </li>
+                </ul>
             </section>
 
-            <section id="work">
-                <h2>Work</h2>
-                <p>Coming soon</p>
+            <section id="projects">
+                <h2>Starred projects</h2>
+                <p class="section-intro">
+                    The projects I'm most proud of. More on <a href="https://github.com/KumaVolt" target="_blank" rel="noopener">GitHub</a>.
+                </p>
+
+                <ul class="project-list">
+                    <li class="project">
+                        <h3><a href="https://gitchrono.com" target="_blank" rel="noopener">GitChrono</a></h3>
+                        <p class="meta">Rust · Apache-2.0 · v0.4.1 (alpha)</p>
+                        <p>A fast, native Git client. Colorful commit graph, line-level staging and diffs, GPU-rendered with gpui. Uses gitoxide for reading history, so 85k-commit repos stay fast.</p>
+                        <div class="links">
+                            <a href="https://gitchrono.com" target="_blank" rel="noopener">Website</a>
+                            <a href="https://github.com/KumaVolt/GitChrono" target="_blank" rel="noopener">Source</a>
+                        </div>
+                    </li>
+                    <li class="project">
+                        <h3><a href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener">Encheo</a></h3>
+                        <p class="meta">Rust · MPL-2.0 · v0.3.0 (pre-release)</p>
+                        <p>An open-source media player for Windows, Linux, macOS and Android, including TV. Connect Plex and get a library with artwork, synced progress and direct playback up to 4K HDR.</p>
+                        <div class="links">
+                            <a href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener">Source</a>
+                            <a href="https://github.com/KumaVolt/encheo/releases" target="_blank" rel="noopener">Download</a>
+                        </div>
+                    </li>
+                </ul>
             </section>
 
         </main>
@@ -386,10 +552,16 @@
                       <a class="social-link" href="https://github.com/KumaVolt" target="_blank" rel="nofollow noopener">Github</a>
                     </li> -->
                     <li class="social-item">
+                        <a class="social-link" href="https://github.com/KumaVolt" target="_blank" rel="nofollow noopener">Github</a>
+                    </li>
+                    <li class="social-item">
+                        <a class="social-link" href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="nofollow noopener">Linkedin</a>
+                    </li>
+                    <li class="social-item">
                         <a class="social-link" href="mailto:mfuente@kumavolt.dev" target="_blank" rel="nofollow noopener">Email</a>
                     </li>
                     <li class="social-item">
-                        <a class="social-link" href="https://twitch.tv/kumavolt" target="_blanl" rel="nofollow noopener">Twitch</a>
+                        <a class="social-link" href="https://twitch.tv/kumavolt" target="_blank" rel="nofollow noopener">Twitch</a>
                     </li>
 
                 </ul>
@@ -400,7 +572,7 @@
                     </li>
                 </ul>
 
-                <span class="copyright">© 2021 Miquel de la Fuente.  All rights reserved.</span>
+                <span class="copyright">© 2026 Miquel de la Fuente.  All rights reserved.</span>
             </section>
         </footer>
     </div>
