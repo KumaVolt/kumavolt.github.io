@@ -377,7 +377,7 @@
             list-style: none;
             padding: 0;
             margin: 0 auto;
-            max-width: 750px;
+            max-width: 1000px;
             display: grid;
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -390,6 +390,31 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .project:hover {
+            border-color: var(--main-color);
+            transform: translateY(-3px);
+        }
+
+        .project-shot {
+            display: block;
+            margin: -20px -20px 20px;
+            background-color: #161616;
+            border-bottom: 1px solid #383737;
+            border-radius: 3px 3px 0 0;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .project-shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top left;
         }
 
         .project h3 {
@@ -426,6 +451,37 @@
         .project .links a {
             color: #ccc;
             margin-right: 15px;
+        }
+
+        .shot-placeholder {
+            aspect-ratio: 16 / 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: radial-gradient(circle at 50% 40%, #3a1b19 0%, #161616 70%);
+            color: var(--main-color);
+        }
+
+        .shot-placeholder .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .shot-placeholder .tags {
+            font-family: monospace;
+            font-size: 13px;
+            color: #999;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project, .project:hover {
+                transition: none;
+                transform: none;
+            }
         }
 
         @media (max-width: 420px) {
@@ -563,6 +619,9 @@
 
                 <ul class="project-list">
                     <li class="project">
+                        <a class="project-shot" href="https://gitchrono.com" target="_blank" rel="noopener" tabindex="-1">
+                            <img src="assets/images/projects/gitchrono.jpg" width="1400" height="907" loading="lazy" alt="GitChrono with repository tabs, a colorful commit graph, commit details and the built-in terminal">
+                        </a>
                         <h3><a href="https://gitchrono.com" target="_blank" rel="noopener">GitChrono</a></h3>
                         <p class="meta">Rust · Apache-2.0 · v0.4.1 (alpha)</p>
                         <p>A fast, native Git client. Colorful commit graph, line-level staging and diffs, GPU-rendered with gpui. Uses gitoxide for reading history, so 85k-commit repos stay fast.</p>
@@ -572,6 +631,13 @@
                         </div>
                     </li>
                     <li class="project">
+                        <a class="project-shot" href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener" tabindex="-1">
+                            <div class="shot-placeholder" role="img" aria-label="Encheo">
+                                <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                                <span class="name">Encheo</span>
+                                <span class="tags">Plex · 4K HDR · Desktop · Android TV</span>
+                            </div>
+                        </a>
                         <h3><a href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener">Encheo</a></h3>
                         <p class="meta">Rust · MPL-2.0 · v0.3.0 (pre-release)</p>
                         <p>An open-source media player for Windows, Linux, macOS and Android, including TV. Connect Plex and get a library with artwork, synced progress and direct playback up to 4K HDR.</p>
