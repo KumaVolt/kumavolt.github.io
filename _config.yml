@@ -1,7 +1,7 @@
 # Site settings
 title: Miquel de la Fuente | Portfolio
 email: mfuente@kumavolt.dev
-description: Miquel de la Fuente (KumaVolt), application developer in the Netherlands. Builds open-source Rust tools: GitChrono and Encheo.
+description: "Miquel de la Fuente (KumaVolt), application developer in the Netherlands. Builds open-source Rust tools: GitChrono and Encheo."
 baseurl: /
 url: https://kumavolt.dev
 twitter_username: KumaVolt
