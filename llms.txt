@@ -1,0 +1,30 @@
+# Miquel de la Fuente (KumaVolt)
+
+> Application developer from Hoofddorp, the Netherlands. IT Application Developer at Brightness Group BV since November 2017. In his own time he builds open-source desktop tools in Rust. Online he goes by KumaVolt.
+
+- Location: Hoofddorp, North Holland, the Netherlands
+- Education: Application and media development, Nova College (graduated December 2017)
+- Languages: Rust, PHP, TypeScript, C++
+- Interests: code, anime, music, gaming, game creation, cinematography, easter eggs
+- Contact: mfuente@kumavolt.dev
+
+## Work
+
+- [Brightness Group BV](https://www.linkedin.com/in/miquel-de-la-fuente/): IT Application Developer, full-time, November 2017 to present. Started as an application development intern in February 2017.
+
+## Current projects
+
+- [GitChrono](https://gitchrono.com): Fast, native Git client in Rust with a colorful commit graph, line-level staging and diffs, GPU-rendered with gpui. Apache-2.0, alpha. Source: https://github.com/KumaVolt/GitChrono
+- [Encheo](https://github.com/KumaVolt/encheo): Open-source media player for Windows, Linux, macOS and Android (including TV). Connects to Plex, plays nearly every format directly including 4K HDR. Rust, Slint and libmpv. MPL-2.0, pre-release.
+
+## Profiles
+
+- [GitHub](https://github.com/KumaVolt)
+- [LinkedIn](https://www.linkedin.com/in/miquel-de-la-fuente/)
+- [Twitch](https://twitch.tv/kumavolt)
+- [X / Twitter](https://x.com/kumavolt)
+
+## Optional
+
+- [Privacy policy](https://kumavolt.dev/privacy-policy/)
+- [Board Game Timer privacy policy](https://kumavolt.dev/board-game-timer/privacy/)
