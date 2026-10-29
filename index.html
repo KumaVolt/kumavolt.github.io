@@ -322,41 +322,123 @@
             text-align: center;
         }
 
-        .console-window {
-            background-color: #ccc;
-            padding-top: 20px;
-            margin: 0 auto;
+        .terminal {
             max-width: 750px;
-            border-radius: 3px;
-        }
-
-        .console {
-            font-family: monospace;
             margin: 0 auto;
-            background-color: #383737;
-            padding:  15px 20px;
-            line-height: 25px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #1e1e1e;
+            border: 1px solid #111;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06) inset;
+            text-align: left;
         }
 
-        .console a[href^="mailto:"] {
-            color: #ccc;
+        .terminal-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 30px;
+            padding: 0 12px;
+            background: linear-gradient(#3c3c3c, #323232);
+            border-bottom: 1px solid #111;
         }
 
-        #now, #projects {
+        .terminal-bar .lights {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-bar .lights i {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ff5f57;
+        }
+
+        .terminal-bar .lights i:nth-child(2) {
+            background-color: #febc2e;
+        }
+
+        .terminal-bar .lights i:nth-child(3) {
+            background-color: #28c840;
+        }
+
+        .terminal-title {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 13px;
+            color: #b8b8b8;
+            pointer-events: none;
+        }
+
+        .terminal-body {
+            margin: 0;
+            padding: 16px 20px 20px;
+            font-family: 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e6e6e6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .terminal-body .dim { color: #8a8a8a; }
+        .terminal-body .user { color: var(--main-color); }
+        .terminal-body .path { color: #6cb6ff; }
+        .terminal-body .prompt { color: #8a8a8a; }
+        .terminal-body .str { color: var(--main-color); }
+        .terminal-body .key { color: #6cb6ff; }
+        .terminal-body .sym { color: #f0a35e; }
+
+        .terminal-body a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: rgba(181, 232, 83, .4);
+            text-underline-offset: 3px;
+        }
+
+        .terminal-body a:hover {
+            text-decoration-color: currentColor;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: .6em;
+            height: 1.15em;
+            vertical-align: text-bottom;
+            background-color: #e6e6e6;
+            animation: blink 1.1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 800px) {
+            .terminal {
+                margin: 0 16px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .terminal-body {
+                font-size: 12px;
+                padding: 12px 14px 16px;
+            }
+
+            .terminal-title {
+                font-size: 12px;
+            }
+        }
+
+        #projects {
             padding: 50px 20px;
         }
 
-        .job {
-            box-sizing: border-box;
-            max-width: 750px;
-            margin: 0 auto 30px;
-        }
-
-        .job h3 {
-            color: var(--main-color);
-        }
-
-        #now h2, #projects h2 {
+        #projects h2 {
             text-transform: uppercase;
             text-align: center;
         }
@@ -482,6 +564,10 @@
                 transition: none;
                 transform: none;
             }
+
+            .cursor {
+                animation: none;
+            }
         }
 
         @media (max-width: 420px) {
@@ -528,86 +614,38 @@
             <section id="about">
                 <h2>Hello World! <br> I am an application developer</h2>
 
-                <div class="console-window">
-                    <div class="console-actions">
-                        <i class="red close-button"></i>
-                        <i class="yellow collapse-button"></i>
-                        <i class="green toggle-fullscreen-button"></i>
+                <div class="terminal" role="region" aria-label="About Miquel">
+                    <div class="terminal-bar">
+                        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="terminal-title">miquel — irb — 80×24</span>
                     </div>
-                    <div class="console">
-                        <p>
-                            > miquel.origin
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> "North Holland, The Netherlands"
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.bachelor
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> "Application- and media development"
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.graduated
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> "December 2017"
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.job
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> "IT Application Developer @ Brightness Group"
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.interests
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> ["code", "anime", "music", "gaming", "game creation", "cinematography", "easter eggs"]
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.languages
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> ["Rust", "PHP", "TypeScript", "C++"]
-                            </span>
-                        </p>
-
-                        <p>
-                            > miquel.email
-                            <br>
-                            <span class="answer">
-                                &nbsp;&nbsp;=> "<a href="mailto:mfuente@kumavolt.dev">mfuente@kumavolt.dev</a>"
-                            </span>
-                        </p>
-
-
-                        <p>
-                            Overwrite current config file? [y/n] y
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="now">
-                <h2>Currently working on</h2>
-                <div class="project job">
-                    <h3>IT Application Developer</h3>
-                    <p class="meta">Brightness Group BV · Nov 2017 – present · Full-time</p>
-                    <p>Building applications at Brightness Group in Hoofddorp, where I started as an application development intern in February 2017.</p>
-                    <div class="links">
-                        <a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
+<pre class="terminal-body"><span class="dim">Last login: <span id="last-login">Wed Oct 29 09:41:12</span> on ttys001</span>
+<span class="user">miquel@kumavolt</span> <span class="path">~</span> % irb
+<span class="prompt">irb(main):001&gt;</span> miquel.name
+=&gt; <span class="str">"Miquel de la Fuente"</span>  <span class="dim"># aka KumaVolt</span>
+<span class="prompt">irb(main):002&gt;</span> miquel.origin
+=&gt; <span class="str">"North Holland, The Netherlands"</span>
+<span class="prompt">irb(main):003&gt;</span> miquel.education
+=&gt; {<span class="key">degree:</span> <span class="str">"Application and media development"</span>,
+    <span class="key">school:</span> <span class="str">"Nova College"</span>,
+    <span class="key">graduated:</span> <span class="str">"December 2017"</span>}
+<span class="prompt">irb(main):004&gt;</span> miquel.job
+=&gt; {<span class="key">role:</span> <span class="str">"IT Application Developer"</span>,
+    <span class="key">company:</span> <span class="str">"Brightness Group BV"</span>,
+    <span class="key">location:</span> <span class="str">"Hoofddorp"</span>,
+    <span class="key">since:</span> <span class="str">"November 2017"</span>,
+    <span class="key">started_as:</span> <span class="str">"Intern, February 2017"</span>,
+    <span class="key">type:</span> <span class="sym">:full_time</span>}
+<span class="prompt">irb(main):005&gt;</span> miquel.languages
+=&gt; [<span class="str">"Rust"</span>, <span class="str">"PHP"</span>, <span class="str">"TypeScript"</span>, <span class="str">"C++"</span>]
+<span class="prompt">irb(main):006&gt;</span> miquel.interests
+=&gt; [<span class="str">"code"</span>, <span class="str">"anime"</span>, <span class="str">"music"</span>, <span class="str">"gaming"</span>,
+    <span class="str">"game creation"</span>, <span class="str">"cinematography"</span>, <span class="str">"easter eggs"</span>]
+<span class="prompt">irb(main):007&gt;</span> miquel.links
+=&gt; {<span class="key">github:</span> <span class="str">"<a href="https://github.com/KumaVolt" target="_blank" rel="noopener">github.com/KumaVolt</a>"</span>,
+    <span class="key">linkedin:</span> <span class="str">"<a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="noopener">linkedin.com/in/miquel-de-la-fuente</a>"</span>,
+    <span class="key">email:</span> <span class="str">"<a href="mailto:mfuente@kumavolt.dev">mfuente@kumavolt.dev</a>"</span>}
+<span class="prompt">irb(main):008&gt;</span> <span class="cursor" aria-hidden="true"></span></pre>
                 </div>
             </section>
 
@@ -698,6 +736,16 @@
         }
 
         konami.init();
+
+        (function () {
+            var el = document.getElementById('last-login');
+            if (!el) return;
+            var d = new Date(Date.now() - 37 * 60 * 1000);
+            var day = d.toLocaleDateString('en-US', { weekday: 'short' });
+            var mon = d.toLocaleDateString('en-US', { month: 'short' });
+            var time = d.toLocaleTimeString('en-GB', { hour12: false });
+            el.textContent = day + ' ' + mon + ' ' + d.getDate() + ' ' + time;
+        })();
     </script>
 </body>
 </html>
