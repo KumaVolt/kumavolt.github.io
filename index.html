@@ -412,6 +412,39 @@
             text-decoration-color: currentColor;
         }
 
+        /* The live prompt (assets/js/terminal.js). The block cursor shows until you click in;
+           then the real text caret takes over. */
+        .terminal-body {
+            max-height: min(78vh, 720px);
+            overflow-y: auto;
+            cursor: text;
+        }
+
+        .term-line {
+            white-space: nowrap;
+        }
+
+        #term-input {
+            width: 1ch;
+            max-width: calc(100% - 15ch);
+            padding: 0;
+            margin: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            caret-color: #e6e6e6;
+        }
+
+        #term-input:focus + .cursor {
+            display: none;
+        }
+
+        .terminal:focus-within {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .45), 0 0 0 1px rgba(181, 232, 83, .35) inset;
+        }
+
         .cursor {
             display: inline-block;
             width: .6em;
@@ -439,6 +472,11 @@
 
             .terminal-title {
                 font-size: 12px;
+            }
+
+            /* Phones zoom into text fields under 16px. */
+            #term-input {
+                font-size: 16px;
             }
         }
 
@@ -628,9 +666,9 @@
                 <div class="terminal" role="region" aria-label="About Miquel">
                     <div class="terminal-bar">
                         <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-                        <span class="terminal-title">miquel — irb — 80×24</span>
+                        <span class="terminal-title">miquel — zsh — 80×24</span>
                     </div>
-<pre class="terminal-body"><span class="dim">Last login: <span id="last-login">Wed Oct 29 09:41:12</span> on ttys001</span>
+<pre class="terminal-body"><span class="term-history"><span class="dim">Last login: <span id="last-login">Wed Oct 29 09:41:12</span> on ttys001</span>
 <span class="user">miquel@kumavolt</span> <span class="path">~</span> % irb
 <span class="prompt">irb(main):001&gt;</span> miquel.name
 =&gt; <span class="str">"Miquel de la Fuente"</span>  <span class="dim"># aka KumaVolt</span>
@@ -656,7 +694,9 @@
 =&gt; {<span class="key">github:</span> <span class="str">"<a href="https://github.com/KumaVolt" target="_blank" rel="noopener">github.com/KumaVolt</a>"</span>,
     <span class="key">linkedin:</span> <span class="str">"<a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="noopener">linkedin.com/in/miquel-de-la-fuente</a>"</span>,
     <span class="key">email:</span> <span class="str">"<a href="mailto:mfuente@kumavolt.dev">mfuente@kumavolt.dev</a>"</span>}
-<span class="prompt">irb(main):008&gt;</span> <span class="cursor" aria-hidden="true"></span></pre>
+<span class="prompt">irb(main):008&gt;</span> exit
+<span class="dim"># This terminal works: try ls, cd projects, open encheo or help</span>
+</span><span id="term-out" aria-live="polite"></span><span class="term-line"><span class="user">miquel@kumavolt</span> <span class="path" id="term-cwd">~</span> % <input id="term-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type a command, for example ls or help"><span class="cursor" aria-hidden="true"></span></span></pre>
                 </div>
             </section>
 
@@ -737,6 +777,7 @@
     </div>
 
     <script src="./assets/js/konamicode.js"></script>
+    <script src="./assets/js/terminal.js"></script>
     <script>
         konami.completed = function() {
             var audio = new Audio('./assets/sounds/secret.mp3').play();
