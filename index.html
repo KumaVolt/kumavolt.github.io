@@ -84,8 +84,8 @@
             {
                 "@type": "SoftwareApplication",
                 "name": "Encheo",
-                "description": "Open-source media player for Windows, Linux, macOS and Android.",
-                "url": "https://github.com/KumaVolt/encheo",
+                "description": "Open-source media player for Plex, Jellyfin, Emby and network shares, for Windows, macOS, Linux, Android and Google TV.",
+                "url": "https://encheo.kumavolt.dev/",
                 "applicationCategory": "MultimediaApplication",
                 "operatingSystem": "Windows, macOS, Linux, Android",
                 "author": { "@id": "https://kumavolt.dev/#miquel" }
@@ -252,10 +252,18 @@
 
         }
 
+        /* The KumaVolt bar (bar/bar.js) stays at the very top; the header sits under it. */
+        kumavolt-bar {
+            position: sticky;
+            top: 0;
+        }
+
         .k-header {
             background-color: var(--white);
             color: var(--black);
             position: fixed;
+            top: 44px;
+            z-index: 10;
             width: calc(100% - 40px);
             padding: 20px;
             height: calc(100px - 40px);
@@ -586,7 +594,10 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7GL6LX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
+    <kumavolt-bar style="display:block;height:44px;background:#141416"></kumavolt-bar>
+    <script src="/bar/bar.js" defer></script>
+
     <div class="k-viewport">
         <header class="k-header">
             <div class="site-name">
@@ -669,19 +680,15 @@
                         </div>
                     </li>
                     <li class="project">
-                        <a class="project-shot" href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener" tabindex="-1">
-                            <div class="shot-placeholder" role="img" aria-label="Encheo">
-                                <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-                                <span class="name">Encheo</span>
-                                <span class="tags">Plex · 4K HDR · Desktop · Android TV</span>
-                            </div>
+                        <a class="project-shot" href="https://encheo.kumavolt.dev/" target="_blank" rel="noopener" tabindex="-1">
+                            <img src="assets/images/projects/encheo.jpg" width="1400" height="875" loading="lazy" alt="Encheo's home screen with Continue Watching and recently added films">
                         </a>
-                        <h3><a href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener">Encheo</a></h3>
-                        <p class="meta">Rust · MPL-2.0 · v0.3.0 (pre-release)</p>
-                        <p>An open-source media player for Windows, Linux, macOS and Android, including TV. Connect Plex and get a library with artwork, synced progress and direct playback up to 4K HDR.</p>
+                        <h3><a href="https://encheo.kumavolt.dev/" target="_blank" rel="noopener">Encheo</a></h3>
+                        <p class="meta">Rust · MPL-2.0 · v0.6.0 (preview)</p>
+                        <p>An open-source media player for Windows, macOS, Linux, Android and Google TV. Plex, Jellyfin, Emby and network shares in one library, with every file played as it is, up to 4K HDR.</p>
                         <div class="links">
+                            <a href="https://encheo.kumavolt.dev/" target="_blank" rel="noopener">Website</a>
                             <a href="https://github.com/KumaVolt/encheo" target="_blank" rel="noopener">Source</a>
-                            <a href="https://github.com/KumaVolt/encheo/releases" target="_blank" rel="noopener">Download</a>
                         </div>
                     </li>
                 </ul>

@@ -15,7 +15,7 @@
 ## Current projects
 
 - [GitChrono](https://gitchrono.com): Fast, native Git client in Rust with a colorful commit graph, line-level staging and diffs, GPU-rendered with gpui. Apache-2.0, alpha. Source: https://github.com/KumaVolt/GitChrono
-- [Encheo](https://github.com/KumaVolt/encheo): Open-source media player for Windows, Linux, macOS and Android (including TV). Connects to Plex, plays nearly every format directly including 4K HDR. Rust, Slint and libmpv. MPL-2.0, pre-release.
+- [Encheo](https://encheo.kumavolt.dev/): Open-source media player for Windows, macOS, Linux, Android and Google TV. Plex, Jellyfin, Emby and network shares (SMB, NFS, WebDAV, SFTP, FTP, DLNA) in one library; plays files directly, including 4K HDR. Rust, Slint and libmpv. MPL-2.0, preview. Source: https://github.com/KumaVolt/encheo
 
 ## Profiles
 
