@@ -71,37 +71,51 @@
     .gh svg { width: 16px; height: 16px; }
     :focus-visible { outline: 2px solid #8ab4ff; outline-offset: 2px; }
 
-    .panel { position: absolute; top: 44px; left: 8px; width: min(640px, calc(100vw - 16px));
-      background: #1a1a1d; border: 1px solid #2c2c32; border-radius: 0 0 14px 14px; border-top: 0;
-      padding: 14px; box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
-      opacity: 0; transform: translateY(-6px); pointer-events: none; visibility: hidden;
-      transition: opacity .14s ease, transform .14s ease, visibility 0s linear .14s; }
-    .panel.open { opacity: 1; transform: none; pointer-events: auto; visibility: visible;
-      transition: opacity .14s ease, transform .14s ease; }
-    .panel p { margin: 2px 4px 12px; color: #8d8d95; font-size: 13px; }
-    ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    li a { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 12px; border-radius: 10px;
-      background: #202024; border: 1px solid transparent; }
+    /* The switcher: a drawer from the left, with one row per project sliding in after the
+       one above it. */
+    .scrim { position: fixed; inset: 0; background: rgba(8, 8, 10, .55); opacity: 0; visibility: hidden;
+      transition: opacity .2s ease, visibility 0s linear .2s; }
+    .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(380px, 100vw); overflow-y: auto;
+      background: #17171a; border-right: 1px solid #2a2a30; box-shadow: 24px 0 60px rgba(0, 0, 0, .45);
+      transform: translateX(-100%); visibility: hidden;
+      transition: transform .28s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .28s; }
+    .open .scrim { opacity: 1; visibility: visible; transition: opacity .2s ease; }
+    .open .drawer { transform: none; visibility: visible; transition: transform .28s cubic-bezier(.2, .8, .2, 1); }
+    .head { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px 0 18px; }
+    .head .brandline { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; font-size: 15px; }
+    .close { width: 38px; height: 38px; border-radius: 10px; border: 0; background: #232328; color: #d8d8dc;
+      display: grid; place-items: center; cursor: pointer; }
+    .close:hover { background: #2c2c32; }
+    .close svg { width: 16px; height: 16px; }
+    .drawer p { margin: 0 18px 12px; color: #8d8d95; font-size: 13px; }
+    ul { list-style: none; margin: 0; padding: 0 12px 18px; display: flex; flex-direction: column; gap: 8px; }
+    li { opacity: 0; transform: translateX(-18px); }
+    .open li { opacity: 1; transform: none;
+      transition: opacity .3s ease, transform .38s cubic-bezier(.2, .8, .2, 1);
+      transition-delay: calc(90ms + var(--i) * 70ms); }
+    li a { display: flex; align-items: center; gap: 14px; padding: 12px 12px; border-radius: 12px;
+      background: #1f1f23; border: 1px solid transparent; }
     li a:hover { background: #26262b; border-color: #34343b; }
     li a[aria-current="page"] { border-color: #3a3a42; }
-    .ic svg { width: 36px; height: 36px; display: block; }
+    .ic { flex: none; }
+    .ic svg { width: 44px; height: 44px; display: block; }
+    .txt { display: flex; flex-direction: column; min-width: 0; }
     .name { font-weight: 650; font-size: 15px; display: flex; align-items: center; gap: 8px; }
     .tag { font-size: 11px; font-weight: 600; color: #141416; background: #c9c9cf; border-radius: 999px; padding: 1px 7px; }
     .line { color: #a7a7ae; font-size: 13px; font-weight: 400; }
-    .host { color: #75757d; font-size: 12px; margin-top: auto; }
+    .host { color: #75757d; font-size: 12px; font-weight: 400; }
     @media (max-width: 640px) {
-      .panel { left: 0; width: 100vw; border-radius: 0 0 12px 12px; border-left: 0; border-right: 0; }
-      ul { grid-template-columns: 1fr; }
-      li a { flex-direction: row; align-items: center; }
-      .host { display: none; }
-      .current { display: none; }
-      .sep { display: none; }
+      .current, .sep { display: none; }
     }
-    @media (prefers-reduced-motion: reduce) { .panel, .panel.open, .chev { transition: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .scrim, .drawer, .open .drawer, li, .open li, .chev { transition: none; }
+      li { transform: none; }
+    }
   `;
 
   const bolt = '<svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.6z" fill="#f2f2f4"/></svg>';
   const chev = '<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const cross = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9m0-9-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   const github = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>';
 
   class KumaVoltBar extends HTMLElement {
@@ -110,13 +124,13 @@
       const root = this.attachShadow({ mode: 'open' });
       const mine = PRODUCTS.find((p) => p.host === here);
       const cards = PRODUCTS.map((p, i) => `
-        <li><a href="${link(p, i)}"${p === mine ? ' aria-current="page"' : ''}>
+        <li style="--i:${i}"><a href="${link(p, i)}"${p === mine ? ' aria-current="page"' : ''}>
           <span class="ic">${p.icon}</span>
-          <span>
+          <span class="txt">
             <span class="name">${p.name}${p === mine ? '<span class="tag">You\'re here</span>' : ''}</span>
             <span class="line">${p.line}</span>
+            <span class="host">${p.host}</span>
           </span>
-          <span class="host">${p.host}</span>
         </a></li>`).join('');
       root.innerHTML = `
         <style>${css}</style>
@@ -127,23 +141,34 @@
           ${mine && mine.host !== 'kumavolt.dev' ? `<span class="sep"></span><span class="current">${mine.name}</span>` : ''}
           <a class="gh" href="https://github.com/KumaVolt">${github}<span>GitHub</span></a>
         </div>
-        <nav class="panel" id="kv-panel" aria-label="KumaVolt projects">
-          <p>Open-source apps by KumaVolt</p>
-          <ul>${cards}</ul>
-        </nav>`;
+        <div class="layer">
+          <div class="scrim"></div>
+          <nav class="drawer" id="kv-panel" aria-label="KumaVolt projects">
+            <div class="head">
+              <span class="brandline"><span class="mark">${bolt}</span>KumaVolt</span>
+              <button class="close" type="button" aria-label="Close">${cross}</button>
+            </div>
+            <p>Open-source apps by KumaVolt</p>
+            <ul>${cards}</ul>
+          </nav>
+        </div>`;
 
       const button = root.querySelector('.switch');
-      const panel = root.querySelector('.panel');
+      const layer = root.querySelector('.layer');
+      const close = root.querySelector('.close');
+      const isOpen = () => layer.classList.contains('open');
       const setOpen = (open) => {
+        if (open === isOpen()) return;
         button.setAttribute('aria-expanded', String(open));
-        panel.classList.toggle('open', open);
-        if (open) panel.querySelector('a').focus({ preventScroll: true });
+        layer.classList.toggle('open', open);
+        document.documentElement.style.overflow = open ? 'hidden' : '';
+        if (open) setTimeout(() => close.focus({ preventScroll: true }), 50);
+        else button.focus({ preventScroll: true });
       };
-      button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
-      document.addEventListener('click', (e) => { if (!e.composedPath().includes(this)) setOpen(false); });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') { setOpen(false); button.focus(); }
-      });
+      button.addEventListener('click', () => setOpen(!isOpen()));
+      close.addEventListener('click', () => setOpen(false));
+      root.querySelector('.scrim').addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
     }
   }
 
