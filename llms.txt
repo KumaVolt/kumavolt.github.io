@@ -1,6 +1,6 @@
 # Miquel de la Fuente (KumaVolt)
 
-> Application developer from Hoofddorp, the Netherlands. IT Application Developer at Brightness Group BV since November 2017. In his own time he builds open-source desktop tools in Rust. Online he goes by KumaVolt.
+> Application developer from Hoofddorp, the Netherlands. IT Application Developer at Brightness Group BV since November 2017. Builds open-source apps in Rust outside of work. Goes by KumaVolt online.
 
 - Location: Hoofddorp, North Holland, the Netherlands
 - Education: Application and media development, Nova College (graduated December 2017)

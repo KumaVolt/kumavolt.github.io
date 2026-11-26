@@ -356,19 +356,36 @@
             gap: 8px;
         }
 
-        .terminal-bar .lights i {
+        .terminal-bar .light {
             width: 12px;
             height: 12px;
+            padding: 0;
+            border: 0;
             border-radius: 50%;
             background-color: #ff5f57;
+            color: rgba(0, 0, 0, .55);
+            font: bold 9px/12px -apple-system, BlinkMacSystemFont, sans-serif;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
-        .terminal-bar .lights i:nth-child(2) {
+        .terminal-bar .light.min {
             background-color: #febc2e;
         }
 
-        .terminal-bar .lights i:nth-child(3) {
+        .terminal-bar .light.max {
             background-color: #28c840;
+        }
+
+        .terminal-bar .lights:hover .close::after { content: "×"; }
+        .terminal-bar .lights:hover .min::after { content: "−"; }
+        .terminal-bar .lights:hover .max::after { content: "+"; }
+
+        .terminal-bar .light:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 1px;
         }
 
         .terminal-title {
@@ -458,6 +475,86 @@
             50% { opacity: 0; }
         }
 
+        .terminal {
+            position: relative;
+        }
+
+        .terminal:focus {
+            outline: none;
+        }
+
+        .terminal-body .egg { color: #febc2e; }
+        .terminal-body .bold { font-weight: bold; }
+
+        .term-canvas, .term-vim {
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+
+        .term-canvas {
+            display: none;
+            background-color: #0c0c0c;
+            cursor: pointer;
+        }
+
+        .term-canvas.on {
+            display: block;
+        }
+
+        .term-vim {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 16px 20px;
+            overflow: hidden;
+            background-color: #1e1e1e;
+            color: #e6e6e6;
+            font-family: 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre;
+        }
+
+        .term-vim .tilde { color: #5f87ff; }
+        .term-vim .bold { font-weight: bold; }
+
+        .terminal.minimized .terminal-body {
+            display: none;
+        }
+
+        .terminal.fullscreen {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            max-width: none;
+            margin: 0;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal.fullscreen .terminal-body {
+            flex: 1;
+            height: auto !important;
+            max-height: none;
+        }
+
+        .term-reopen {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 18px;
+            border: 1px solid #111;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+            color: var(--main-color);
+            font: 14px 'SF Mono', Menlo, Consolas, monospace;
+            cursor: pointer;
+        }
+
+        .term-reopen[hidden] {
+            display: none;
+        }
+
         @media (max-width: 800px) {
             .terminal {
                 margin: 0 16px;
@@ -465,7 +562,7 @@
         }
 
         @media (max-width: 420px) {
-            .terminal-body {
+            .terminal-body, .term-vim {
                 font-size: 12px;
                 padding: 12px 14px 16px;
             }
@@ -661,7 +758,7 @@
 
                 <div class="terminal" role="region" aria-label="About Miquel">
                     <div class="terminal-bar">
-                        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="lights"><button type="button" class="light close" aria-label="Close terminal"></button><button type="button" class="light min" aria-label="Minimize terminal"></button><button type="button" class="light max" aria-label="Full screen terminal"></button></span>
                         <span class="terminal-title">miquel — zsh — 80×24</span>
                     </div>
 <pre class="terminal-body"><span class="term-history"><span class="dim">Last login: <span id="last-login">Wed Oct 29 09:41:12</span> on ttys001</span>
@@ -691,7 +788,7 @@
     <span class="key">linkedin:</span> <span class="str">"<a href="https://www.linkedin.com/in/miquel-de-la-fuente/" target="_blank" rel="noopener">linkedin.com/in/miquel-de-la-fuente</a>"</span>,
     <span class="key">email:</span> <span class="str">"<a href="mailto:mfuente@kumavolt.dev">mfuente@kumavolt.dev</a>"</span>}
 <span class="prompt">irb(main):008&gt;</span> exit
-<span class="dim"># This terminal works: try ls, cd projects, open encheo or help</span>
+<span class="dim"># This terminal works: try help, ls -la or open encheo. It is full of easter eggs.</span>
 </span><span id="term-out" aria-live="polite"></span><span class="term-line"><span class="user">miquel@kumavolt</span> <span class="path" id="term-cwd">~</span> % <input id="term-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type a command, for example ls or help"><span class="cursor" aria-hidden="true"></span></span></pre>
                 </div>
             </section>
@@ -780,6 +877,7 @@
     <script>
         konami.completed = function() {
             var audio = new Audio('./assets/sounds/secret.mp3').play();
+            document.dispatchEvent(new CustomEvent('konami'));
         }
 
         konami.init();
