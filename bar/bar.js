@@ -1,6 +1,6 @@
 /*
  * The KumaVolt bar: one thin bar across the top of every KumaVolt site (kumavolt.dev,
- * gitchrono.com, encheo.kumavolt.dev) with a switcher to the others.
+ * gitchrono.com, encheo.kumavolt.dev, opencookie.kumavolt.dev) with a switcher to the others.
  *
  * A site adds it with:
  *   <kumavolt-bar style="display:block;height:44px;background:#141416"></kumavolt-bar>
@@ -35,6 +35,13 @@
       url: 'https://encheo.kumavolt.dev/',
       line: 'One player for Plex, Jellyfin, Emby and the files on your network',
       icon: '<svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#1c1c1f"/><g transform="translate(-2.75 1.75)"><rect x="24" y="24" width="38" height="12" rx="6" fill="#f5a33b"/><path d="M66 22 L80 30 L66 38 Z" fill="#f5a33b" stroke="#f5a33b" stroke-width="3" stroke-linejoin="round"/><rect x="24" y="44" width="40" height="12" rx="6" fill="#bf8134"/><rect x="24" y="64" width="52" height="12" rx="6" fill="#88602d"/></g></svg>',
+    },
+    {
+      name: 'OpenCookie',
+      host: 'opencookie.kumavolt.dev',
+      url: 'https://opencookie.kumavolt.dev/',
+      line: 'A cookie banner, scanner and consent log you host yourself',
+      icon: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#231b15"/><path d="M16 6.5a9.5 9.5 0 1 0 9.4 10.9 3.2 3.2 0 0 1-3.9-3.4 3.2 3.2 0 0 1-3.6-3.9A3.2 3.2 0 0 1 16 6.5Z" fill="#f4c542"/><circle cx="12.4" cy="13.6" r="1.5" fill="#231b15"/><circle cx="17.6" cy="20" r="1.5" fill="#231b15"/><circle cx="12" cy="19.6" r="1.1" fill="#231b15"/></svg>',
     },
   ];
 
