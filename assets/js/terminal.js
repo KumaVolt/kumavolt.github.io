@@ -22,7 +22,7 @@
     'about.txt': file(
       'Miquel de la Fuente, aka KumaVolt.\n' +
       'Application developer at Brightness Group in Hoofddorp since 2017.\n' +
-      'Builds open-source apps in Rust outside of work: GitChrono and Encheo.\n' +
+      'Builds open-source apps outside of work: GitChrono, Encheo and OpenCookie.\n' +
       'Likes code, anime, music, games, making games and cinematography.'),
     projects: dir({
       gitchrono: dir({
@@ -46,6 +46,17 @@
         website: link(site('https://encheo.kumavolt.dev/', 'encheo'), 'encheo.kumavolt.dev'),
         source: link('https://github.com/KumaVolt/encheo', 'github.com/KumaVolt/encheo'),
       }, { url: site('https://encheo.kumavolt.dev/', 'encheo'), label: 'encheo.kumavolt.dev' }),
+      opencookie: dir({
+        'README.md': file(
+          '# OpenCookie\n' +
+          'A cookie banner, cookie scanner and consent log you host yourself, for as\n' +
+          'many sites as you like. One Docker container, rules per country, no banner\n' +
+          'when a site sets no cookies that need consent.\n\n' +
+          'open website   opencookie.kumavolt.dev\n' +
+          'open source    github.com/KumaVolt/opencookie'),
+        website: link(site('https://opencookie.kumavolt.dev/', 'opencookie'), 'opencookie.kumavolt.dev'),
+        source: link('https://github.com/KumaVolt/opencookie', 'github.com/KumaVolt/opencookie'),
+      }, { url: site('https://opencookie.kumavolt.dev/', 'opencookie'), label: 'opencookie.kumavolt.dev' }),
     }),
     links: dir({
       github: link('https://github.com/KumaVolt', 'github.com/KumaVolt'),
@@ -93,6 +104,11 @@
   var pretty = function (parts) { return parts.length ? '~/' + parts.join('/') : '~'; };
 
   // ---------- output ----------
+  // The window keeps the height it opened with: new output scrolls inside it instead of
+  // pushing the rest of the page down.
+  var lockHeight = function () {
+    if (!body.style.height) body.style.height = getComputedStyle(body).height;
+  };
   var scrollDown = function () { body.scrollTop = body.scrollHeight; };
   var span = function (text, cls) {
     var s = document.createElement('span');
@@ -148,6 +164,7 @@
   };
 
   var run = function (raw) {
+    lockHeight();
     var text = raw.trim();
     echoPrompt(raw);
     if (!text) return;
@@ -239,6 +256,7 @@
     return words.reduce(function (a, b) { var i = 0; while (i < a.length && a[i] === b[i]) i++; return a.slice(0, i); });
   };
   var complete = function () {
+    lockHeight();
     var value = input.value;
     var tokens = value.split(' ');
     var last = tokens[tokens.length - 1];
@@ -303,6 +321,7 @@
       input.value = history[historyAt] || '';
     } else if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
       e.preventDefault();
+      lockHeight();
       echoPrompt(input.value + '^C');
       input.value = '';
     } else if (e.ctrlKey && (e.key === 'l' || e.key === 'L')) {
