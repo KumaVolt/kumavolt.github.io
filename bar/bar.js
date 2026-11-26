@@ -40,8 +40,13 @@
       name: 'OpenCookie',
       host: 'opencookie.kumavolt.dev',
       url: 'https://opencookie.kumavolt.dev/',
+<<<<<<< Updated upstream
       line: 'A cookie banner, scanner and consent log you host yourself',
       icon: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#231b15"/><path d="M16 6.5a9.5 9.5 0 1 0 9.4 10.9 3.2 3.2 0 0 1-3.9-3.4 3.2 3.2 0 0 1-3.6-3.9A3.2 3.2 0 0 1 16 6.5Z" fill="#f4c542"/><circle cx="12.4" cy="13.6" r="1.5" fill="#231b15"/><circle cx="17.6" cy="20" r="1.5" fill="#231b15"/><circle cx="12" cy="19.6" r="1.1" fill="#231b15"/></svg>',
+=======
+      line: 'A self-hosted cookie banner that scans your site for you',
+      icon: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#2a211b"/><path d="M16 6.5a9.5 9.5 0 1 0 9.4 10.9 3.2 3.2 0 0 1-3.9-3.4 3.2 3.2 0 0 1-3.6-3.9A3.2 3.2 0 0 1 16 6.5Z" fill="#e9b872"/><circle cx="12.4" cy="13.6" r="1.5" fill="#2a211b"/><circle cx="17.6" cy="20" r="1.5" fill="#2a211b"/><circle cx="12" cy="19.6" r="1.1" fill="#2a211b"/></svg>',
+>>>>>>> Stashed changes
     },
   ];
 
